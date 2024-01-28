@@ -10,5 +10,6 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+    @ManyToMany
     private List<Category> categories;
 }
