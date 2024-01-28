@@ -19,6 +19,22 @@ public class Category implements Serializable {
         this.name = name;
     }
 
+    public Category(String name) {
+        this.name = name;
+    }
+
+    public Category(int id, String name, List<Product> products) {
+        this.id = id;
+        this.name = name;
+        this.products = products;
+    }
+
+    public Category() {
+        this.id = 0;
+        this.name = "";
+        this.products = null;
+    }
+
     public int getId() {
         return id;
     }
@@ -33,5 +49,13 @@ public class Category implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }
