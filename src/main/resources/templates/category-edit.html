@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add products</title>
+</head>
+<body>
+<h1>Edit Category</h1>
+
+<form th:action="@{/category/{categoryId}/update(categoryId=${category.id})}" th:object="${category}" method="post">
+    <label for="name">Category Name:</label>
+    <input type="text" id="name" th:field="*{name}" required>
+
+    <br>
+
+    <h4>Select Products:</h4>
+    <div th:each="product : ${products}">
+        <label th:for="${#ids.next('product')}">
+            <input type="checkbox" th:id="${#ids.prev('product')}" th:field="*{products}" th:value="${product.id}" th:text="${product.name}">
+        </label>
+    </div>
+
+    <br>
+
+    <button type="submit">Update Category</button>
+</form>
+</body>
+</html>
