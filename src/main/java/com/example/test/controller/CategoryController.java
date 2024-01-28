@@ -4,25 +4,29 @@ import com.example.test.model.Category;
 import com.example.test.model.Product;
 import com.example.test.repository.CategoryRepository;
 import com.example.test.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 @Controller
-public class categoryController {
+@RequestMapping("/category")
+public class CategoryController {
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
-    public categoryController(CategoryRepository categoryRepository, ProductRepository productRepository) {
+    @Autowired
+    public CategoryController(CategoryRepository categoryRepository, ProductRepository productRepository) {
         this.categoryRepository = categoryRepository;
         this.productRepository = productRepository;
     }
 
-    @GetMapping("/category/{categoryId}/edit")
-    public String editProduct(@PathVariable int categoryId, Model model) {
+    @GetMapping("/edit")
+    public String editProduct(@RequestParam int categoryId, Model model) {
         List<Product> products = productRepository.findAll();
         Category category = categoryRepository.findById(categoryId).orElse(null);
         model.addAttribute("products", products);
@@ -30,12 +34,9 @@ public class categoryController {
         return "category-edit";
     }
 
-    @PostMapping("/category/{categoryId}/update")
+    @PostMapping("/update")
     public String updateCategory(Category category, Model model) {
         categoryRepository.save(category);
         return "category-update";
     }
-
-
-
 }
