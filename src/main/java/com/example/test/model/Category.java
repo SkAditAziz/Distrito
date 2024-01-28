@@ -23,6 +23,11 @@ public class Category implements Serializable {
         this.name = name;
     }
 
+    public Category(String name, List<Product> products) {
+        this.name = name;
+        this.products = products;
+    }
+
     public Category(int id, String name, List<Product> products) {
         this.id = id;
         this.name = name;
