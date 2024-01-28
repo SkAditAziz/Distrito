@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Controller
 @RequestMapping("/category")
@@ -43,7 +45,15 @@ public class CategoryController {
 
     @PostMapping("/update")
     public String updateCategory(Category category, Model model) {
-        categoryRepository.save(category);
+        Category existingCategory = categoryRepository.findById(category.getId()).orElse(null);
+
+        if (existingCategory != null) {
+            existingCategory.setName(category.getName());
+            existingCategory.setProducts(Stream.concat(existingCategory.getProducts().stream(), category.getProducts().stream())
+                    .collect(Collectors.toList()));
+
+            categoryRepository.save(existingCategory);
+        }
         return "category-update";
     }
 }

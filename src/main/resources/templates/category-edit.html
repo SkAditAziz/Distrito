@@ -48,6 +48,8 @@
 <h1>Edit Category</h1>
 
 <form th:action="@{/category/update}" method="post" th:object="${category}">
+    <input type="hidden" th:field="*{id}" />
+    <input type="hidden" th:field="*{name}" />
     <h2 th:text="${category.name}"></h2>
 
     <br>
