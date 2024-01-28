@@ -34,5 +34,7 @@
     <ul>
         <li th:each="product : ${products}" th:text="${product.name}"></li>
     </ul>
+    <br><br>
+    <a th:href="@{/}">Return to Home</a>
 </body>
 </html>
