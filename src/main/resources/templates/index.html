@@ -3,6 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        h3 {
+            margin-top: 30px;
+            color: #333;
+        }
+
+        form {
+            display: inline-block;
+            margin: 20px 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        select {
+            width: 150px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h3>Select a category</h3>
@@ -12,6 +49,14 @@
             <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
         </select>
         <button type="submit">Add Products</button>
+    </form>
+
+<br><br>
+    <form th:action="@{/category/showProducts}" method="get">
+        <select id="categoryId" name="categoryId">
+            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+        </select>
+        <button type="submit">Show Products</button>
     </form>
 </body>
 </html>
