@@ -25,6 +25,13 @@ public class CategoryController {
         this.productRepository = productRepository;
     }
 
+    @GetMapping("/showProducts")
+    public String showProduct(@RequestParam int categoryId, Model model) {
+        List<Product> products = categoryRepository.findProductsByCategoryId(categoryId);
+        model.addAttribute("products", products);
+        return "category-show-products";
+    }
+
     @GetMapping("/edit")
     public String editProduct(@RequestParam int categoryId, Model model) {
         List<Product> products = productRepository.findAll();
