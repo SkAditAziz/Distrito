@@ -10,6 +10,7 @@ public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique=true)
     private String name;
     @OneToMany
     private List<Product> products;
