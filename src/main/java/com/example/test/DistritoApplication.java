@@ -23,27 +23,22 @@ public class DistritoApplication {
 		return runner -> {
 			System.out.println("hello Distrilo!");
 //			List<Product> products1 = List.of(
-//					new Product("Adidas Black Shoe"),
-//					new Product("Puma White Shoe"),
-//					new Product("Nike Yellow t-shirt"),
-//					new Product("Adidas sports t-shirt"),
-//					new Product("Adidas Women t-shirt"),
-//					new Product("Puma Women Shoe"),
-//					new Product("Nike Men t-shirt"),
-//					new Product("Adidas Men Green Shoe")
+//					new Product("Adidas Black Shoe", 1599),
+//					new Product("Puma White Shoe", 2000),
+//					new Product("Nike Yellow t-shirt", 750),
+//					new Product("Adidas sports t-shirt", 3600),
+//					new Product("Adidas Women t-shirt", 999),
+//					new Product("Puma Women Shoe", 3333.33),
+//					new Product("Nike Men t-shirt", 1320),
+//					new Product("Adidas Men Green Shoe", 6666)
 //			);
 //			productRepository.saveAll(products1);
-
+//
 //			List<Category> categories = List.of(
-//					new Category("Men", null),
-//					new Category("Women"),
 //					new Category("Shoe"),
-//					new Category("T shirt"),
-//					new Category("Adidas"),
-//					new Category("Puma"),
-//					new Category("Nike")
+//					new Category("T shirt")
 //			);
-
+//
 //			categoryRepository.saveAll(categories);
 
 //			List<Product> shoeProducts = List.of(

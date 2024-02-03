@@ -2,7 +2,7 @@ package com.example.test.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @Entity
 public class Product {
@@ -10,18 +10,22 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+    private BigDecimal price;
 
-    public Product(String name) {
+    public Product(String name, BigDecimal price) {
         this.name = name;
+        this.price = price;
     }
 
-    public Product(long id, String name) {
+    public Product(long id, String name, BigDecimal price) {
         this.id = id;
         this.name = name;
+        this.price = price;
     }
     public Product() {
         this.id = 0;
         this.name = "";
+        this.price = BigDecimal.valueOf(0);
     }
 
     public long getId() {
@@ -38,5 +42,13 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }
